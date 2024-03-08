@@ -22,15 +22,16 @@ def clean_mkdir(path):
     os.makedirs(path)
 
 
-def load_data(x_path, y_path=None):
+def load_data(x_path, y_path=''):
     x, y = [], []
     index = 0
     for file in os.listdir(x_path):
         index += 1
         #me
         file_path = os.path.join(x_path, file)
+        img = Image.open(file_path)
         #end
-        img = Image.open(x_path + file)
+        #img = Image.open(x_path + file)
         img_array = np.asarray(img, dtype="uint8")
         img_array = img_array / (MAX_VAL * 1.0)
         x.append(img_array)
