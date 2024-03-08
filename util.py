@@ -27,6 +27,9 @@ def load_data(x_path, y_path=None):
     index = 0
     for file in os.listdir(x_path):
         index += 1
+        #me
+        file_path = os.path.join(x_path, file)
+        #end
         img = Image.open(x_path + file)
         img_array = np.asarray(img, dtype="uint8")
         img_array = img_array / (MAX_VAL * 1.0)
