@@ -45,6 +45,17 @@ def run(data_path, model_weights_path, output_path):
     output_path = Path(output_path)
     model = get_model(model_weights_path)
     x, _ = load_data(data_path)
+    '''
+    ################ me
+    # Assuming 'x' is your input image
+    image_path = '/content/srcnn/data/images/img.jpg'
+    img = Image.open(image_path)
+    img = img.resize((400, 400), Image.ANTIALIAS)
+    #img = img.convert('RGB')
+    # Convert the image to a numpy array and add batch dimension
+    x = np.expand_dims(np.array(img), axis=0)
+    ###################################
+    '''
     out_array = model.predict(x)
     for index in range(out_array.shape[0]):
         num, rows, cols, channels = out_array.shape
